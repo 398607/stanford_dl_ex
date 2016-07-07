@@ -65,6 +65,7 @@ fprintf('Optimization took %f seconds.\n', toc);
 actual_prices = train.y;
 predicted_prices = theta'*train.X;
 
+
 % Print out root-mean-squared (RMS) training error.
 train_rms=sqrt(mean((predicted_prices - actual_prices).^2));
 fprintf('RMS training error: %f\n', train_rms);
