@@ -8,10 +8,12 @@ function [f,g] = linear_regression_vec(theta, X,y)
   %
   m=size(X,2);
   
-  % initialize objective value and gradient.
-  f = 0;
-  g = zeros(size(theta));
-
+  h = theta'*X;
+  
+  f = sum((h - y).^2);
+  
+  g = X * (h - y)';
+  
   %
   % TODO:  Compute the linear regression objective function and gradient 
   %        using vectorized code.  (It will be just a few lines of code!)
