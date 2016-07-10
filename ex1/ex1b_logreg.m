@@ -9,7 +9,7 @@ addpath ../common/minFunc_2012/minFunc/compiled
 %      n is the number of pixels in each image.
 % train.y and test.y will contain the corresponding labels (0 or 1).
 binary_digits = true;
-[train,test] = ex1_load_mnist(binary_digits);
+[train, test] = ex1_load_mnist(binary_digits);
 
 % Add row of 1s to the dataset to act as an intercept term.
 train.X = [ones(1,size(train.X,2)); train.X]; 
@@ -18,6 +18,8 @@ test.X = [ones(1,size(test.X,2)); test.X];
 % Training set dimensions
 m=size(train.X,2);
 n=size(train.X,1);
+
+fprintf('n = %d\n', n);
 
 % Train logistic regression classifier using minFunc
 options = struct('MaxIter', 100);
@@ -53,4 +55,6 @@ fprintf('Training accuracy: %2.1f%%\n', 100*accuracy);
 % Print out accuracy on the test set.
 accuracy = binary_classifier_accuracy(theta,test.X,test.y);
 fprintf('Test accuracy: %2.1f%%\n', 100*accuracy);
+
+imagesc(reshape(theta(2:end, :), 28, 28));
 
